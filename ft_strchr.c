@@ -6,7 +6,7 @@
 /*   By: shsawaki <shsawaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:53:38 by shsawaki          #+#    #+#             */
-/*   Updated: 2022/08/22 05:45:17 by shsawaki         ###   ########.fr       */
+/*   Updated: 2022/08/22 11:50:17 by shsawaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 		i++;
 	}
-	if (c == 0)
+	if ((char)c == 0)
 		return ((char *)(s + i));
 	return (NULL);
 }

@@ -6,14 +6,14 @@
 #    By: shsawaki <shsawaki@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 18:43:02 by shsawaki          #+#    #+#              #
-#    Updated: 2022/08/22 05:10:49 by shsawaki         ###   ########.fr        #
+#    Updated: 2022/08/22 11:07:22 by shsawaki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar -rc
+AR = ar -rcs
 RM = rm -f
 SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c\
@@ -28,15 +28,17 @@ OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
 RANLIB = ranlib
 
+ifdef WITH_BONUS
+	OBJS += $(BOBJS)
+endif
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(AR) $(NAME) $(OBJS)
-	$(RANLIB) $(NAME)
 
-bonus: $(OBJS) $(BOBJS)
-	$(AR) $(NAME) $(OBJS) $(BOBJS)
+bonus:
+	@make WITH_BONUS=1
 
 clean:
 	$(RM) $(OBJS) $(BOBJS)
